@@ -10,9 +10,9 @@ import { prepareTactDeployment } from "@tact-lang/deployer";
     let packageName = "task_TaskName.pkg";
     let player = Address.parse("0QCWVqwkomdw-o4wsVqdBO_HHkv584nZw0ziJUVgeUWG6MkO");
     let nonce = 0n;
-    let taskName = "some task"
+    let taskNameString = "FIFTing"
 
-    let init = await TaskName.init(player, nonce, taskName, false);
+    let init = await TaskName.init(player, nonce, taskNameString, false);
 
     // Load required data
     let address = contractAddress(0, init);

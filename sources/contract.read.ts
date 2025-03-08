@@ -1,6 +1,6 @@
 import { Address, contractAddress} from "@ton/core";
 import { TonClient4 } from "@ton/ton";
-import { TaskName } from "./output/task_TaskName";
+import { FIFTing } from "./output/task_FIFTing";
 
 
 (async (): Promise<void> => {
@@ -9,13 +9,13 @@ import { TaskName } from "./output/task_TaskName";
     });
 
     let contract_address = Address.parse("0QCWVqwkomdw-o4wsVqdBO_HHkv584nZw0ziJUVgeUWG6MkO");
-    
+
     // Prepareing
     console.log("Reading Contract Info...");
     console.log(contract_address);
 
     // Input the contract address
-    let contract = await TaskName.fromAddress(contract_address);
+    let contract = await FIFTing.fromAddress(contract_address);
     let contract_open = await client.open(contract);
     console.log("Counter Value: " + (await contract_open.getSolved()));
 })();
