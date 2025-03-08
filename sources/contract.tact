@@ -1,4 +1,5 @@
 import "./messages";
+import "./utils";
 
 trait Task {
     solved: Bool;
@@ -22,6 +23,19 @@ trait Task {
     }
 }
 
-contract TaskName(player: Address, nonce: Int, taskName: String, solved: Bool) with Task{
-    
+message CheckMind{
+    guess: Int;
+}
+
+contract WhereIsMyMind(player: Address, nonce: Int, taskName: String, solved: Bool, magicNumber: Int) with Task{
+    receive(msg: CheckMind) { 
+        self.magicNumber = mind(self.magicNumber);
+        if (msg.guess == self.magicNumber) {
+            self.solved = true;
+        }
+    }
+
+    get fun getMagicNumber(): Int {
+        return self.magicNumber;
+    }
 }

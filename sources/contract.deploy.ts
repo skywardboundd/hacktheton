@@ -1,18 +1,20 @@
 import * as fs from "fs";
 import * as path from "path";
 import { Address, contractAddress } from "@ton/core";
-import { TaskName } from "./output/task_TaskName";
+import { WhereIsMyMind } from "./output/task_WhereIsMyMind";
 import { prepareTactDeployment } from "@tact-lang/deployer";
+import { randomInt } from "crypto";
 
 (async (): Promise<void> => {
     // Parameters
     let testnet = true;
-    let packageName = "task_TaskName.pkg";
+    let packageName = "task_WhereIsMyMind.pkg";
     let player = Address.parse("0QCWVqwkomdw-o4wsVqdBO_HHkv584nZw0ziJUVgeUWG6MkO");
     let nonce = 0n;
     let taskName = "some task"
+    let curr = randomInt(0, 1e9);
 
-    let init = await TaskName.init(player, nonce, taskName, false);
+    let init = await WhereIsMyMind.init(player, nonce, taskName, false, BigInt(curr));
 
     // Load required data
     let address = contractAddress(0, init);
