@@ -8,15 +8,8 @@ import { TaskName } from "./output/task_TaskName";
         endpoint: "https://sandbox-v4.tonhubapi.com", // 🔴 Test-net API endpoint
     });
 
-    // Parameters
-    let player = Address.parse("0QCWVqwkomdw-o4wsVqdBO_HHkv584nZw0ziJUVgeUWG6MkO");
-    let nonce = 0n;
-    let taskName = "some task"
-
-    let init = await TaskName.init(player, nonce, taskName, false);
-
-    let contract_address = contractAddress(0, init);
-
+    let contract_address = Address.parse("0QCWVqwkomdw-o4wsVqdBO_HHkv584nZw0ziJUVgeUWG6MkO");
+    
     // Prepareing
     console.log("Reading Contract Info...");
     console.log(contract_address);
