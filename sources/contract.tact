@@ -2,7 +2,7 @@ import "./messages";
 
 trait Task {
     solved: Bool;
-    FIFTing: String;
+    taskName: String;
 
     receive("check"){
         message(MessageParameters{
@@ -11,7 +11,7 @@ trait Task {
             mode: SendRemainingValue,
             bounce: false,
             body: CheckLevelResult{
-                name: self.FIFTing,
+                name: self.taskName,
                 completed: self.solved
                 }.toCell()
         });
@@ -22,7 +22,7 @@ trait Task {
     }
 }
 
-contract FIFTing(player: Address, nonce: Int, FIFTing: String, solved: Bool) with Task{
+contract FIFTing(player: Address, nonce: Int, taskName: String, solved: Bool) with Task{
     receive("is 300 bucks") {
         self.solved = true;
     }
